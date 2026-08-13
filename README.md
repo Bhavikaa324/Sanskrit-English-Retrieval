@@ -1,62 +1,47 @@
 # Sanskrit-English-Retrieval
-A multilingual semantic retrieval system for the Bhagavad Gita, designed to retrieve relevant Sanskrit verses from English queries and English explanations from Sanskrit queries. The project focuses on multilingual embeddings, contrastive learning, hard-negative mining, cross-lingual retrieval, transliteration handling, and RAG.
-The notebook for the task is: `notebook/sanskrit-english-retrieval.ipynb`
+A multilingual semantic retrieval system for Bhagavad Gita verses using a fine-tuned multilingual embedding model.
 
-### Objectives:
-The project evaluates:
-- Multilingual embedding models
-- Sanskrit-English cross-lingual alignment
-- Contrastive learning
+The system supports:
+- Sanskrit → English retrieval
+- English → Sanskrit retrieval
+- Transliteration → Sanskrit retrieval
 - Hard-negative mining
-- Semantic retrieval
-- Retrieval evaluation
-- Evaluate top-k retrieval quality
-- RAG-oriented retrieval
+- Contrastive fine-tuning
+- Recall@K, MRR and nDCG evaluation
+- Mini RAG demonstration
 
-### Dataset:
-The project uses a Bhagavad Gita dataset.`data/`
-The cleaned dataset contains: 701 verses
-Each verse is treated as an individual retrieval document.
+### Setup
+1. Clone the repository :
+```
+git clone https://github.com/Bhavikaa324/Sanskrit-English-Retrieval.git
+cd gita-multilingual-retrieval
+```
+2. Create a virtual environment :
+```
+python -m venv venv
+venv\Scripts\activate
+```
+3. Dataset :
+The project uses the Bhagavad Gita Sanskrit-English dataset from HuggingFace. The cleaned dataset contains 701 aligned verses. Dwonload and load it before running notebook.
 
-### Data Split:
-- Training: 560
-- Validation: 70
-- Test: 71
+`JDhruv14/Bhagavad-Gita_Dataset`
 
-### Data Preparation:
-The raw dataset was cleaned by:
-- Removing missing Sanskrit/English entries
-- Removing duplicate verses
-- Normalizing whitespace
-- Preserving verse and chapter identifiers
-- Maintaining Sanskrit-English alignment
+Load it using:
+`from datasets import load_dataset`
 
-### BASE embedding model:
-The base embedding model used is: 
-`intfloat/multilingual-e5-small`
+`dataset = load_dataset("JDhruv14/Bhagavad-Gita_Dataset")`
+4. Run the notebook :
+`notebooks/sanskrit-english-retrieval.ipynb`
 
-### Fine-tuned embedding model:
-The multilingual embedding model is fine-tuned using contrastive learning.
+Base model: `intfloat/multilingual-e5-small`
+5. Evaluation :
+Evaluation is performed for:
+- Sanskrit → English
+- English → Sanskrit
+- Transliteration → Sanskrit
+The final results are saved to:`results/final_results.csv`
+#### Limitations:
+- The dataset contains only 701 verses.
+- English translations can vary in wording.
+- Transliteration formats may vary.
 
-### Retrieval:
-After fine-tuning, the model is used as a semantic retriever.
-
-### Evaluation:
-- Recall@K
-- MRR
-- nDCG
-
-### Base vs Fine-Tuned Evaluation:
-The final metrics are stored in:
-`results/final_results.csv`
-
-### Transliteration Handling:
-The dataset contains Sanskrit transliteration.
-### Chunking Strategy:
-Each Bhagavad Gita verse is treated as one retrieval unit.
-### Embedding Normalization:
-This allows cosine similarity to be used consistently between queries and documents.
-### Failure Analysis:
-Incorrect retrievals are analyzed to understand where the model fails.
-### Mini RAG Demo:
-The fine-tuned embedding model is used as the retrieval component of a small RAG pipeline.
