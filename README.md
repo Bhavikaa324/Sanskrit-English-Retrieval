@@ -31,11 +31,6 @@ The raw dataset was cleaned by:
 - Preserving verse and chapter identifiers
 - Maintaining Sanskrit-English alignment
 
-#### Positive Pair Creation:
-For training, bidirectional cross-lingual positive pairs were created.
-#### Hard Negative Mining:
-nstead of using only random negative examples, semantically similar but incorrect verses were identified
-
 ### BASE embedding model:
 The base embedding model used is: 
 `intfloat/multilingual-e5-small`
