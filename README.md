@@ -14,7 +14,6 @@ The system supports:
 1. Clone the repository :
 ```
 git clone https://github.com/Bhavikaa324/Sanskrit-English-Retrieval.git
-cd gita-multilingual-retrieval
 ```
 2. Create a virtual environment :
 ```
