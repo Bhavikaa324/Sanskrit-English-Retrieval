@@ -10,7 +10,36 @@ The system supports:
 - Recall@K, MRR and nDCG evaluation
 - Mini RAG demonstration
 
+### Project Structure
+
+```text
+SANSKRIT-ENGLISH-RETRIEVAL/
+│
+├── data/
+│   ├── gita_701_clean.csv
+│   ├── gita_clean_master.csv
+│   ├── hard_negative_candidates.csv
+│   ├── train_documents.csv
+│   ├── val_documents.csv
+│   ├── test_documents.csv
+│   ├── train_positive_pairs.csv
+│   ├── validation_pairs.csv
+│   ├── test_pairs.csv
+│   └── train_triplets.csv
+│
+├── notebook/
+│   └── sanskrit_english_retrieval.ipynb
+│
+├── results/
+│   ├── final_results.csv
+│   ├── model_comparison.csv
+│   └── retrieval_failures.csv
+│
+└── README.md
+```
+
 ### Setup
+
 1. Clone the repository :
 ```
 git clone https://github.com/Bhavikaa324/Sanskrit-English-Retrieval.git
@@ -30,7 +59,7 @@ Load it using:
 
 `dataset = load_dataset("JDhruv14/Bhagavad-Gita_Dataset")`
 4. Run the notebook :
-`notebooks/sanskrit-english-retrieval.ipynb`
+`notebooks/sanskrit_english_retrieval.ipynb`
 
 Base model: `intfloat/multilingual-e5-small`
 5. Evaluation :
